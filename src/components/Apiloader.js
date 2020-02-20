@@ -81,11 +81,7 @@ export default class Apiloader extends React.Component {
 }
 
 const ContainerText = styled.Text`
-  color: ${(() => {
-    dataSource.status == "active";
-  })
-    ? "black"
-    : "gray"};
+  color: ${props => (props.active ? " black" : "grey")};
 `;
 
 const styles = StyleSheet.create({
