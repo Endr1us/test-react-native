@@ -12,7 +12,7 @@ export default class App extends React.Component {
         <ScrollView style={styles.container}>
           <Filtres title="Find your love!" />
           <Userslist title="Userlist" />
-          <Text>Privet Julia)</Text>
+          
         </ScrollView>
       </View>
     );
