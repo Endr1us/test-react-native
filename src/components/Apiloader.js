@@ -32,8 +32,7 @@ export default class Apiloader extends React.Component {
       .then(responseJson => {
         this.setState({
           isLoading: false,
-          dataSource: responseJson.result,
-          statuUser: responseJson.result.status
+          dataSource: responseJson.result
         });
       })
       .catch(error => {
@@ -42,7 +41,6 @@ export default class Apiloader extends React.Component {
   };
 
   render() {
-    console.log(this.state.dataSource);
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
@@ -55,7 +53,9 @@ export default class Apiloader extends React.Component {
       <View>
         <View style={styles.userslists}>
           <FlatList
-            data={this.state.dataSource}
+            data={this.state.dataSource.sort((a, b) =>
+              a.first_name.localeCompare(b.first_name)
+            )}
             renderItem={({ item }) => (
               <TouchableOpacity
                 style={styles.users}
@@ -81,7 +81,7 @@ export default class Apiloader extends React.Component {
 }
 
 const ContainerText = styled.Text`
-  color: ${props => (props.active ? " black" : "grey")};
+  color: ${item => (item.status = "active" ? "black" : "grey")};
 `;
 
 const styles = StyleSheet.create({
@@ -93,3 +93,4 @@ const styles = StyleSheet.create({
     marginBottom: 10
   }
 });
+
