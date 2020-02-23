@@ -8,25 +8,25 @@ export const Userslist = props => {
   return (
     <View style={styles.userslist}>
       <Text style={styles.text}>{props.title}</Text>
-      <Apiloader />
 
       <SectionList
         sections={[
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          {
-            title: "J",
-            data: [
-              "Jackson",
-              "James",
-              "Jillian",
-              "Jimmy",
-              "Joel",
-              "John",
-              "Julie"
-            ]
-          }
+          { title: "A", data: [Apiloader] },
+          { title: "B", data: [] },
+          { title: "C", data: [] },
+          { title: "D", data: [] },
+          { title: "I", data: [] },
+          { title: "F", data: [] },
+          { title: "J", data: [] },
+          { title: "K", data: [] },
+          { title: "L", data: [] },
+          { title: "M", data: [] },
+          { title: "N", data: [] },
+          { title: "O", data: [] },
+          { title: "P", data: [] },
+          { title: "R", data: [] }
         ]}
-        renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+        renderItem={({ item }) => <Apiloader>{item}</Apiloader>}
         renderSectionHeader={({ section }) => (
           <Text style={styles.sectionHeader}>{section.title}</Text>
         )}
@@ -47,12 +47,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: 10
   },
-  item: {
-    fontSize: 14,
-    color: "#096112",
-    alignItems: "flex-start",
-    justifyContent: "flex-start"
-  },
+
   sectionHeader: {
     fontSize: 18,
     color: "#0c0961",
@@ -60,3 +55,4 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start"
   }
 });
+
