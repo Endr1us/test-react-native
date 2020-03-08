@@ -1,37 +1,12 @@
 import React from "react";
-import { SectionList, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Apiloader from "./Apiloader";
 
 export const Userslist = props => {
-  //const liters = ['A', 'B', 'C'];
-  //let title = liters.map((title)
   return (
     <View style={styles.userslist}>
       <Text style={styles.text}>{props.title}</Text>
-
-      <SectionList
-        sections={[
-          { title: "A", data: [Apiloader] },
-          { title: "B", data: [] },
-          { title: "C", data: [] },
-          { title: "D", data: [] },
-          { title: "I", data: [] },
-          { title: "F", data: [] },
-          { title: "J", data: [] },
-          { title: "K", data: [] },
-          { title: "L", data: [] },
-          { title: "M", data: [] },
-          { title: "N", data: [] },
-          { title: "O", data: [] },
-          { title: "P", data: [] },
-          { title: "R", data: [] }
-        ]}
-        renderItem={({ item }) => <Apiloader>{item}</Apiloader>}
-        renderSectionHeader={({ section }) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
-        )}
-        keyExtractor={(item, index) => index}
-      />
+      <Apiloader />
     </View>
   );
 };
@@ -55,4 +30,3 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start"
   }
 });
-
