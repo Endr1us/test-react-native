@@ -23,17 +23,18 @@ export default class Apiloader extends React.Component {
   }
 
   componentDidMount = async () => {
-    //event.preventDefalt();
-
     return await fetch(
       `https://gorest.co.in/public-api/users?_format=json&access-token=${API_KEY}`
     )
       .then(response => response.json())
       .then(responseJson => {
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson.result
-        });
+        this.setState(
+          {
+            isLoading: false,
+            dataSource: responseJson.result
+          },
+          function() {}
+        );
       })
       .catch(error => {
         console.error(error);
@@ -49,18 +50,24 @@ export default class Apiloader extends React.Component {
       );
     }
 
+    let brr = { first_name: ["<A>", "<B>"] };
+    let arr = this.state.dataSource;
+    //var obj = Object.assign(brr, arr);
+    arr.sort((a, b) => a.first_name.localeCompare(b.first_name));
+    //console.log(brr.first_name.join(" "));
+    //console.log(obj);
+
     return (
       <View>
         <View style={styles.userslists}>
           <FlatList
-            data={this.state.dataSource.sort((a, b) =>
-              a.first_name.localeCompare(b.first_name)
-            )}
+            data={arr}
             renderItem={({ item }) => (
               <TouchableOpacity
                 style={styles.users}
                 onPress={this.props.visible}
               >
+                <Text>{brr.first_name.join(" ")}</Text>
                 <ModalWind
                   title={
                     <ContainerText>
@@ -81,7 +88,8 @@ export default class Apiloader extends React.Component {
 }
 
 const ContainerText = styled.Text`
-  color: ${item => (item.status = "active" ? "black" : "grey")};
+  color: ${item => (item.status == "active" ? "black" : "grey")};
+  margin-top: 10px;
 `;
 
 const styles = StyleSheet.create({
@@ -93,4 +101,3 @@ const styles = StyleSheet.create({
     marginBottom: 10
   }
 });
-
