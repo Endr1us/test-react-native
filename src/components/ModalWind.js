@@ -21,7 +21,7 @@ export default class ModalWind extends React.Component {
 
   render() {
     return (
-      <ContainerView>
+      <View>
         <Modal
           animationType="slide"
           transparent={false}
@@ -64,15 +64,10 @@ export default class ModalWind extends React.Component {
         >
           <Text>{this.props.title}</Text>
         </TouchableHighlight>
-      </ContainerView>
+      </View>
     );
   }
 }
-
-const ContainerView = styled.View`
-  color: ${item => (item.status == "active" ? "black" : "grey")};
-  margin-top: 10px;
-`;
 
 const styles = StyleSheet.create({
   modalWind: {
