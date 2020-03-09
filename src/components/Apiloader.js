@@ -70,7 +70,9 @@ export default class Apiloader extends React.Component {
                 <Text>{brr.first_name.join(" ")}</Text>
                 <ModalWind
                   title={
-                    <ContainerText>
+                    <ContainerText
+                      active={item.status == "active" ? true : false}
+                    >
                       #{item.id} - {item.first_name} {item.last_name}{" "}
                       {moment(item.dob).fromNow("YYYY")} old - {item.gender} -{" "}
                       {item.status}
@@ -88,7 +90,7 @@ export default class Apiloader extends React.Component {
 }
 
 const ContainerText = styled.Text`
-  color: ${item => (item.status == "active" ? "black" : "grey")};
+  color: ${props => (props.active ? "black" : "grey")};
   margin-top: 10px;
 `;
 
